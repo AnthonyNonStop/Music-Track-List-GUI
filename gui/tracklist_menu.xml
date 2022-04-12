@@ -1,0 +1,147 @@
+<GUIItems>
+
+    <Item name="TrackList_Controller" hidden="true">
+	    <OnOpen>
+            <Action type="Hide" target="Menu_Main"/>
+	    	<Action type="Show" target="TrackList_Main"/>
+	    </OnOpen>
+
+	    <OnClose>
+            <Action type="Show" target="Menu_Main"/>
+	    	<Action type="Hide" target="TrackList_Main"/>
+	    </OnClose>
+    </Item>
+
+
+    <Item name="TrackList_Main" hidden="true">
+        
+		<OnKeyDown key0="27">
+			<Action type="Click" target="Menu_tracklist_Back"/>
+		</OnKeyDown>
+
+		<OnOpen>
+	    	<Action type="TriggerEvent" target="GUI_CAPTURE_INPUT"/>
+	    </OnOpen>
+
+	    <OnClose>
+	    	<Action type="TriggerEvent" target="GUI_RELEASE_INPUT"/>
+	    </OnClose>
+
+		<StaticImage origin="0 0">
+			<RenderObject2D texture="data/textures/gui/bg_texture.dds" sizeX="7680" color="f0e3cc26" sizeY="1920" texRepeatX="3" texRepeatY="1"/>
+		</StaticImage>
+
+		<StaticImage name="ScreenBg" origin="0 0">
+			<RenderObject2D texture="data/textures/gui/square.tga" sizeX="2560" sizeY="9999" color="0c0b0bbf"/>
+			<StaticImage align="l" origin="-128 0">
+				<RenderObject2D texture="data/textures/gui/bg_edge.tga" flipX="true" />
+			</StaticImage>
+			<StaticImage align="r" origin="128 0">
+				<RenderObject2D texture="data/textures/gui/bg_edge.tga" flipY="true" />
+			</StaticImage>
+		</StaticImage>
+
+		<Item name="TrackListNameUpper" origin="-1180 660" align="l" sizeX="2560" hidden="false">
+			<StaticText align="l" text="Track List" font="header_3" textColor="f97b03"/>
+			<StaticImage origin="0 -40" align="l">
+				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="732" sizeY="4" color="f97b03"/>
+			</StaticImage>
+		</Item> 
+
+
+
+		<!-- mod--> 
+		<Item name="album" origin="-800 100">
+			<StaticImage origin="0 0" >
+				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="740" sizeY="740" color="f0e3cc"/> <!--Cd Cover Outline --> <!-- can be deleted if the Cd Cover has a outline already--> 
+			</StaticImage>
+
+			<StaticImage origin="0 0" >
+				<RenderObject2D texture="data/textures/coverart.dds" flipY="true"/> <!--album art been resized to 720 x 720 Px -->
+			</StaticImage>
+
+			<StaticText origin="0 -430" align="c" text="DK2 Soundtrack by Cosmin " font="header_3" textColor="f97b03"/>
+		</Item>
+
+		<Item name="SongList" origin="120 350">	<!--add 70 to this when you add a song-->	 
+			<StaticText origin="0 0" text="1) Ready to Kick Some Doors 02:08" align="l" font="header_3" textColor="f0e3cc"/>
+			<StaticText origin="0 -70" text="2) Boots on the Ground 03:44" align="l" font="header_3" textColor="f0e3cc"/>
+			<StaticText origin="0 -140" text="3) Iahim 3:54" align="l" font="header_3" textColor="f0e3cc"/>
+			<StaticText origin="0 -210" text="4) Sand Soldiers 3:33" align="l" font="header_3" textColor="f0e3cc"/>
+			<StaticText origin="0 -280" text="5) Forced Entry 3:05" align="l" font="header_3" textColor="f0e3cc"/>
+			<StaticText origin="0 -350" text="6) No Man Left Behind 03:33" align="l" font="header_3" textColor="f0e3cc"/>
+			<StaticText origin="0 -420" text="7) Airfield Z Betrayal 03:05" align="l" font="header_3" textColor="f0e3cc"/>
+			<StaticText origin="0 -490" text="8) SAD Boys in Town 3:52" align="l" font="header_3" textColor="f0e3cc"/>			
+		</Item>
+
+		<Item name="bottom Screen Bar" align="sv" origin="0 -688">
+			<StaticImage name="ScreenFooter" align="b" origin="0 -32" stealFocus="true">
+				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="9999" sizeY="120" color="211e1d"/>
+			</StaticImage>
+
+			<!-- back button -->
+			<Button name="Menu_tracklist_Back" align="lb" origin="-1200 -4">
+				<ButtonText align="l" origin="20 0" text="@menu_generic_back" font="header_2" textColor="f0e3cc"/>
+				<OnHover>
+					<RenderObject2D texture="data/textures/gui/button_hover_01.tga" color="f0e3cc" flipX="false"/>
+					<ButtonText align="l" origin="20 0" text="@menu_generic_back" font="header_2" textColor="211e1d"/>
+				</OnHover>
+				<OnClick>
+					<RenderObject2D texture="data/textures/gui/button_hover_01.tga" color="40392b" flipX="false"/>
+					<Action type="Hide" target="TrackList_Controller"/>
+				</OnClick>
+			</Button>
+		
+			<!-- WEBSITE link -->
+			<Button origin="0 -4" align="cb" acceptInput="true" hidden="false">
+				<ButtonText origin="0 0" text="COMPOSER'S WEBSITE" align="c" font="header_2" textColor="f0e3cc"/>
+				<OnHover>
+					<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" />
+					<ButtonText origin="0 0" text="COMPOSER'S WEBSITE" align="c" font="header_2" textColor="40382b"/>
+				</OnHover>
+				<OnClick>
+					<RenderObject2D texture="data/textures/gui/menu_select.dds" color="40382b" />
+					<Action type="OpenURL" target="https://cosminmirza.com/"/>
+				</OnClick> 
+			</Button>
+			
+			<Item name="link buttons" origin="1200 28" align="rb"> <!-- Thanks Sly for the logos -->
+				
+				<Button name="Youtube" align="c" origin="0 0" >
+					<RenderObject2D texture="data/textures/AnthonyYoutube.dds" color="f0e3cc80"/>
+					<OnHover>
+						<RenderObject2D texture="data/textures/AnthonyYoutube.dds" color="f0e3cc"/>
+					</OnHover>
+					<OnClick>
+						<RenderObject2D texture="data/textures/AnthonyYoutube.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
+						<Action type="OpenURL" target="https://www.youtube.com/watch?v=Kr1j5_z_j0o&list=PLg_S3MVuDT8Ysrlqr7-EhF6fDFbUzzTbG"/> 
+					</OnClick>
+				</Button>
+				
+				
+				<!-- <Button name="Spotify" align="c" origin="-90 0" >
+					<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc80"/>
+					<OnHover>
+						<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc"/> 
+					</OnHover>
+					<OnClick>
+						<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/> 
+						<Action type="OpenURL" target=""/> 
+					</OnClick>
+				</Button> -->
+				
+				<!-- <Button name="Soundcloud" align="c" origin="-180 0" >
+					<RenderObject2D texture="data/textures/gui/AnthonySoundcloud.dds" color="f0e3cc80"/>
+					<OnHover>
+						<RenderObject2D texture="data/textures/gui/AnthonySoundcloud.dds" color="f0e3cc"/>
+					</OnHover>
+					<OnClick>
+						<RenderObject2D texture="data/textures/gui/AnthonySoundcloud.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
+						<Action type="OpenURL" target=""/> 
+					</OnClick>
+				</Button> -->
+
+			</Item>
+		</Item>
+	</Item>
+</GUIItems>
