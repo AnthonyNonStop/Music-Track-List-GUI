@@ -1,1 +1,1 @@
-# music-gui-thing
+# music gui thing
