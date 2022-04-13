@@ -1,5 +1,12 @@
 <GUIItems>
 
+<EventActionBatch name="GAME_GUI_LOADTIME_ACTIONS">
+	<!-- currently unused, but you can add actions here that are executed at startup. Useful for mods, if you want to add items declared in separate xml files.
+		<Action type="Hide" target="old_item_name"/>
+		<Action type="Show" target="my_new_item_name"/>
+	-->
+</EventActionBatch>
+
 <EventActionBatch name="GAME_GUI_OPEN_MAIN_MENU">
 	<Action type="Show" target="Menu_Main"/>
 </EventActionBatch>
@@ -251,23 +258,6 @@
 	</Item>
 
 	<Item name="Extra Buttons" origin="1196 -640" align="bsv">
-
-		<StaticImage origin="-240 0">
-			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
-		</StaticImage>
-		<Button origin="-240 0" tooltip="Track list">
-			<RenderObject2D texture="data/textures/tracklist_hover.dds" blendMode="none"/>
-			<OnHover>
-				<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none"/>
-			</OnHover>
-			<OnClick>
-				<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
-				<Action type="Show" target="TrackList_Controller"/>
-				<!-- <Action type="TriggerEvent" target="GUI_GAME_TEMP_REPLAY_GO"/> -->
-			</OnClick>
-		</Button>
-
-
 		<StaticImage origin="-160 0">
 			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
 		</StaticImage>
@@ -429,6 +419,22 @@
 	</Item>
 
 	<Item name="Extra Buttons" origin="1160 -600" align="lbsv">
+
+		<StaticImage origin="-240 0">
+			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
+		</StaticImage>
+		<Button origin="-240 0" tooltip="Track list">
+			<RenderObject2D texture="data/textures/tracklist_hover.dds" blendMode="none"/>
+			<OnHover>
+				<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none"/>
+			</OnHover>
+			<OnClick>
+				<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
+				<Action type="Show" target="TrackList_Controller"/>
+			</OnClick>
+		</Button>
+
+
 		<StaticImage name="Options Background" origin="0 0">
 			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
 		</StaticImage>
@@ -467,6 +473,132 @@
 			</OnClick>
 		</Button>
 		-->
+
+		<Item origin="-40 -55" name="#MapSeedParent" hidden="true">
+			<StaticText origin="0 0" text="Seed" font="paragraph_2" textColor="f97b03ff" tooltip="@menu_m_missiongen_copy">
+				<OnCursorDown>
+					<Action type="TriggerEvent" target="GUI_GAME_RANDOMMAP_COPYSEED"/>
+				</OnCursorDown>
+			</StaticText>
+			<StaticText name="#MapSeed" origin="0 -30" text="0xBAADF00D" font="paragraph_2" textColor="f0e3cc" tooltip="@menu_m_missiongen_copy">
+				<OnCursorDown>
+					<Action type="TriggerEvent" target="GUI_GAME_RANDOMMAP_COPYSEED"/>
+				</OnCursorDown>
+			</StaticText>
+		</Item>
+	</Item>
+
+	<!-- Tips -->
+	<Item origin="0 -500" align="sv">
+		<StaticText name="TipTitle" origin="0 0" text="@tip_title" font="header_3" textColor="f97b03ff"/>
+		<StaticText name="#Tip" origin="3 -45" text="< No tips loaded >" align="t" font="paragraph_2" textColor="f0e3cc" hidden="true">
+			<OnOpen>
+				<Action type="TriggerEvent" target="GUI_GAME_TIPS_SHOW"/>
+			</OnOpen>
+		</StaticText>
+	</Item>
+</Item>
+
+
+<Item name="Menu_Ingame_Replay" origin="0 0" hidden="true">
+	<OnOpen>
+		<Action type="TriggerEvent" target="GUI_CAPTURE_INPUT"/>
+		<Action type="Hide" target="#waypoint_menu"/>
+		<Action type="SetForeground" target="Menu_Ingame_Replay"/>
+		<Action type="TriggerEvent" target="GUI_GAME_PAUSE"/>
+		<Action type="Show" target="#Tip"/>
+	</OnOpen>
+
+	<OnClose>
+		<Action type="TriggerEvent" target="GUI_RELEASE_INPUT"/>
+		<Action type="Hide" target="#Tip"/>
+	</OnClose>
+
+	<StaticImage origin="0 0">
+		<RenderObject2D texture="data/textures/gui/bg_texture.dds" sizeX="7680" color="f0e3cc26" sizeY="1920" texRepeatX="3" texRepeatY="1"/>
+	</StaticImage>
+	<StaticImage name="ScreenBg" origin="0 0">
+		<RenderObject2D texture="data/textures/gui/square.tga" sizeX="2560" sizeY="9999" color="0c0b0bbf"/>
+		<StaticImage align="l" origin="-128 0">
+			<RenderObject2D texture="data/textures/gui/bg_edge.tga" flipX="true" />
+		</StaticImage>
+		<StaticImage align="r" origin="128 0">
+			<RenderObject2D texture="data/textures/gui/bg_edge.tga" flipY="true" />
+		</StaticImage>
+	</StaticImage>
+	<StaticImage origin="0 280" sizeX="1" sizeY="1.2" >
+		<RenderObject2D texture="data/textures/gui/bg_logo_smoke.dds" />
+	</StaticImage>
+	<StaticImage origin="0 340">
+		<RenderObject2D texture="data/textures/gui/dk2_logo.dds"/>
+	</StaticImage>
+
+	<!-- enclose all butons in a single parent item which is centered on the background -->
+	<Item origin="0 -40" sizeX="670" sizeY="90">
+		<StaticImage origin="0 60">
+				<RenderObject2D texture="data/textures/gui/menu_separator_top.dds" color="f0e3cc"/>
+		</StaticImage>
+		<StaticImage origin="0 -300">
+				<RenderObject2D texture="data/textures/gui/menu_separator_top.dds" color="f0e3cc" flipY="true"/>
+		</StaticImage>
+
+		<Button name="Menu_Ingame_Resume" origin="0 0" sizeX="670" sizeY="90">
+			<ButtonText origin="0 0" text="@menu_m_ingame_resume" font="header_2" textColor="f0e3cc"/>
+			<OnHover>
+				<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" />
+				<ButtonText origin="0 0" text="@menu_m_ingame_resume" font="header_2" textColor="40382b"/>
+			</OnHover>
+			<OnClick>
+				<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
+				<ButtonText origin="0 0" text="@menu_m_ingame_resume" font="header_3" textColor="40382b"/>
+				<Action type="Hide" target="Menu_Ingame_Replay"/>
+				<Action type="TriggerEvent" target="GUI_GAME_RESUME"/>
+			</OnClick>
+		</Button>
+
+		<Button origin="0 -80" sizeX="670" sizeY="90">
+			<ButtonText origin="0 0" text="@menu_m_ingame_replay_mission" font="header_2" textColor="f0e3cc"/>
+			<OnHover>
+				<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" />
+				<ButtonText origin="0 0" text="@menu_m_ingame_replay_mission" font="header_2" textColor="40382b"/>
+			</OnHover>
+			<OnClick>
+				<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
+				<ButtonText origin="0 0" text="@menu_m_ingame_replay_mission" font="header_3" textColor="40382b"/>
+				<Action type="TriggerEvent" target="GUI_GAME_RESTART_MAP"/>
+			</OnClick>
+		</Button>
+
+		<Button origin="0 -240" sizeX="670" sizeY="90">
+			<ButtonText origin="0 0" text="@menu_m_quit_replay" font="header_2" textColor="f0e3cc"/>
+			<OnHover>
+				<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" />
+				<ButtonText origin="0 0" text="@menu_m_quit_replay" font="header_2" textColor="40382b"/>
+			</OnHover>
+			<OnClick>
+				<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
+				<ButtonText origin="0 0" text="@menu_m_quit_replay" font="header_3" textColor="40382b"/>
+				<Action type="Hide" target="Menu_Ingame_Replay"/>
+				<Action type="TriggerEvent" target="GUI_GAME_QUIT_TO_MAIN_MENU"/>
+			</OnClick>
+		</Button>
+
+	</Item>
+
+	<Item name="Extra Buttons" origin="1160 -600" align="lbsv">
+		<StaticImage name="Options Background" origin="0 0">
+			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
+		</StaticImage>
+		<Button name="Options" origin="0 0" sizeX="72" sizeY="72" tooltip="@menu_m_optionsgame_ttip">
+				<RenderObject2D texture="data/textures/gui/menu_options_normal.dds" blendMode="none"/>
+			<OnHover>
+				<RenderObject2D texture="data/textures/gui/menu_options_hover.dds" blendMode="none"/>
+			</OnHover>
+			<OnClick>
+				<RenderObject2D texture="data/textures/gui/menu_options_hover.dds" scaleX="0.95" scaleY="0.95" blendMode="none"/>
+				<Action type="Show" target="Menu_Options_IngameReplay"/>
+			</OnClick>
+		</Button>
 
 		<Item origin="-40 -55" name="#MapSeedParent" hidden="true">
 			<StaticText origin="0 0" text="Seed" font="paragraph_2" textColor="f97b03ff" tooltip="@menu_m_missiongen_copy">
