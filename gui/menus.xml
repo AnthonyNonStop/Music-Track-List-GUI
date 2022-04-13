@@ -258,6 +258,21 @@
 	</Item>
 
 	<Item name="Extra Buttons" origin="1196 -640" align="bsv">
+
+		<StaticImage origin="-240 0">
+					<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
+				</StaticImage>
+				<Button origin="-240 0" tooltip="Track list">
+					<RenderObject2D texture="data/textures/tracklist_hover.dds" blendMode="none"/>
+					<OnHover>
+						<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none"/>
+					</OnHover>
+					<OnClick>
+						<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
+						<Action type="Show" target="TrackList_Controller"/>
+					</OnClick>
+				</Button>
+
 		<StaticImage origin="-160 0">
 			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
 		</StaticImage>
@@ -419,21 +434,6 @@
 	</Item>
 
 	<Item name="Extra Buttons" origin="1160 -600" align="lbsv">
-
-		<StaticImage origin="-240 0">
-			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
-		</StaticImage>
-		<Button origin="-240 0" tooltip="Track list">
-			<RenderObject2D texture="data/textures/tracklist_hover.dds" blendMode="none"/>
-			<OnHover>
-				<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none"/>
-			</OnHover>
-			<OnClick>
-				<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
-				<Action type="Show" target="TrackList_Controller"/>
-			</OnClick>
-		</Button>
-
 
 		<StaticImage name="Options Background" origin="0 0">
 			<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>

@@ -2,19 +2,19 @@
 
     <Item name="TrackList_Controller" hidden="true">
 	    <OnOpen>
-            <Action type="Hide" target="Menu_Main"/>
+        <Action type="Hide" target="Menu_Main"/>
 	    	<Action type="Show" target="TrackList_Main"/>
 	    </OnOpen>
 
 	    <OnClose>
-            <Action type="Show" target="Menu_Main"/>
+        <Action type="Show" target="Menu_Main"/>
 	    	<Action type="Hide" target="TrackList_Main"/>
 	    </OnClose>
     </Item>
 
 
     <Item name="TrackList_Main" hidden="true">
-        
+
 		<OnKeyDown key0="27">
 			<Action type="Click" target="Menu_tracklist_Back"/>
 		</OnKeyDown>
@@ -46,14 +46,14 @@
 			<StaticImage origin="0 -40" align="l">
 				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="732" sizeY="4" color="f97b03"/>
 			</StaticImage>
-		</Item> 
+		</Item>
 
 
 
-		<!-- mod--> 
+		<!-- mod-->
 		<Item name="album" origin="-800 100">
 			<StaticImage origin="0 0" >
-				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="740" sizeY="740" color="f0e3cc"/> <!--Cd Cover Outline --> <!-- can be deleted if the Cd Cover has a outline already--> 
+				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="740" sizeY="740" color="f0e3cc"/> <!--Cd Cover Outline --> <!-- can be deleted if the Cd Cover has a outline already-->
 			</StaticImage>
 
 			<StaticImage origin="0 0" >
@@ -63,7 +63,7 @@
 			<StaticText origin="0 -430" align="c" text="DK2 Soundtrack by Cosmin " font="header_3" textColor="f97b03"/>
 		</Item>
 
-		<Item name="SongList" origin="120 350">	<!--add 70 to this when you add a song-->	 
+		<Item name="SongList" origin="120 350">	<!--add 70 to this when you add a song-->
 			<StaticText origin="0 0" text="1) Ready to Kick Some Doors 02:08" align="l" font="header_3" textColor="f0e3cc"/>
 			<StaticText origin="0 -70" text="2) Boots on the Ground 03:44" align="l" font="header_3" textColor="f0e3cc"/>
 			<StaticText origin="0 -140" text="3) Iahim 3:54" align="l" font="header_3" textColor="f0e3cc"/>
@@ -71,7 +71,7 @@
 			<StaticText origin="0 -280" text="5) Forced Entry 3:05" align="l" font="header_3" textColor="f0e3cc"/>
 			<StaticText origin="0 -350" text="6) No Man Left Behind 03:33" align="l" font="header_3" textColor="f0e3cc"/>
 			<StaticText origin="0 -420" text="7) Airfield Z Betrayal 03:05" align="l" font="header_3" textColor="f0e3cc"/>
-			<StaticText origin="0 -490" text="8) SAD Boys in Town 3:52" align="l" font="header_3" textColor="f0e3cc"/>			
+			<StaticText origin="0 -490" text="8) SAD Boys in Town 3:52" align="l" font="header_3" textColor="f0e3cc"/>
 		</Item>
 
 		<Item name="bottom Screen Bar" align="sv" origin="0 -688">
@@ -91,7 +91,7 @@
 					<Action type="Hide" target="TrackList_Controller"/>
 				</OnClick>
 			</Button>
-		
+
 			<!-- WEBSITE link -->
 			<Button origin="0 -4" align="cb" acceptInput="true" hidden="false">
 				<ButtonText origin="0 0" text="COMPOSER'S WEBSITE" align="c" font="header_2" textColor="f0e3cc"/>
@@ -102,11 +102,11 @@
 				<OnClick>
 					<RenderObject2D texture="data/textures/gui/menu_select.dds" color="40382b" />
 					<Action type="OpenURL" target="https://cosminmirza.com/"/>
-				</OnClick> 
+				</OnClick>
 			</Button>
-			
+
 			<Item name="link buttons" origin="1200 28" align="rb"> <!-- Thanks Sly for the logos -->
-				
+
 				<Button name="Youtube" align="c" origin="0 0" >
 					<RenderObject2D texture="data/textures/AnthonyYoutube.dds" color="f0e3cc80"/>
 					<OnHover>
@@ -114,22 +114,22 @@
 					</OnHover>
 					<OnClick>
 						<RenderObject2D texture="data/textures/AnthonyYoutube.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
-						<Action type="OpenURL" target="https://www.youtube.com/watch?v=Kr1j5_z_j0o&list=PLg_S3MVuDT8Ysrlqr7-EhF6fDFbUzzTbG"/> 
+						<Action type="OpenURL" target="https://www.youtube.com/watch?v=Kr1j5_z_j0o&list=PLg_S3MVuDT8Ysrlqr7-EhF6fDFbUzzTbG"/>
 					</OnClick>
 				</Button>
-				
-				
+
+
 				<!-- <Button name="Spotify" align="c" origin="-90 0" >
 					<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc80"/>
 					<OnHover>
-						<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc"/> 
+						<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc"/>
 					</OnHover>
 					<OnClick>
-						<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/> 
-						<Action type="OpenURL" target=""/> 
+						<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
+						<Action type="OpenURL" target=""/>
 					</OnClick>
 				</Button> -->
-				
+
 				<!-- <Button name="Soundcloud" align="c" origin="-180 0" >
 					<RenderObject2D texture="data/textures/gui/AnthonySoundcloud.dds" color="f0e3cc80"/>
 					<OnHover>
@@ -137,7 +137,7 @@
 					</OnHover>
 					<OnClick>
 						<RenderObject2D texture="data/textures/gui/AnthonySoundcloud.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
-						<Action type="OpenURL" target=""/> 
+						<Action type="OpenURL" target=""/>
 					</OnClick>
 				</Button> -->
 
