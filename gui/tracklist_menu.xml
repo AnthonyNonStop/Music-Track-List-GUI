@@ -1,5 +1,29 @@
 <GUIItems>
 
+<EventActionBatch name="GAME_GUI_LOADTIME_ACTIONS">
+	<Action type="Show" target="TrackList_Button"/>
+	<Action type="SetForeground" target="TrackList_Button"/>
+</EventActionBatch>
+
+  	<Item name="TrackList_Button" origin="300 -600" hidden="true">
+			<OnOpen>
+				<Action type="AddMeToParent" target="Menu_Main"/>
+			</OnOpen>
+    	<StaticImage origin="0 0">
+      	<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
+      </StaticImage>
+      <Button origin="0 0" tooltip="Track list">
+      	<RenderObject2D texture="data/textures/tracklist_hover.dds" blendMode="none"/>
+      	<OnHover>
+        	<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none"/>
+      	</OnHover>
+      	<OnClick>
+        	<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
+        	<Action type="Show" target="TrackList_Controller"/>
+      	</OnClick>
+      </Button>
+  	</Item>
+
     <Item name="TrackList_Controller" hidden="true">
 	    <OnOpen>
         <Action type="Hide" target="Menu_Main"/>
@@ -20,12 +44,12 @@
 		</OnKeyDown>
 
 		<OnOpen>
-	    	<Action type="TriggerEvent" target="GUI_CAPTURE_INPUT"/>
-	    </OnOpen>
+	    <Action type="TriggerEvent" target="GUI_CAPTURE_INPUT"/>
+	  </OnOpen>
 
-	    <OnClose>
-	    	<Action type="TriggerEvent" target="GUI_RELEASE_INPUT"/>
-	    </OnClose>
+	  <OnClose>
+	  	<Action type="TriggerEvent" target="GUI_RELEASE_INPUT"/>
+	  </OnClose>
 
 		<StaticImage origin="0 0">
 			<RenderObject2D texture="data/textures/gui/bg_texture.dds" sizeX="7680" color="f0e3cc26" sizeY="1920" texRepeatX="3" texRepeatY="1"/>
