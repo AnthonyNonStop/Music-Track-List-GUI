@@ -1,5 +1,30 @@
 <GUIItems>
 
+  <EventActionBatch name="GAME_GUI_LOADTIME_ACTIONS">
+  	<!-- currently unused, but you can add actions here that are executed at startup. Useful for mods, if you want to add items declared in separate xml files.
+  		<Action type="Hide" target="old_item_name"/>
+  		<Action type="Show" target="my_new_item_name"/>
+  	-->
+
+    <Action type="Show" target="TrackList_button"/>
+  </EventActionBatch>
+
+  <Item name="TrackList_button" hidden="true">
+    <StaticImage origin="0 0">
+          <RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
+        </StaticImage>
+        <Button origin="0 0" tooltip="Track list">
+          <RenderObject2D texture="data/textures/tracklist_hover.dds" blendMode="none"/>
+          <OnHover>
+            <RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none"/>
+          </OnHover>
+          <OnClick>
+            <RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
+            <Action type="Show" target="TrackList_Controller"/>
+          </OnClick>
+        </Button>
+  </Item>
+
     <Item name="TrackList_Controller" hidden="true">
 	    <OnOpen>
         <Action type="Hide" target="Menu_Main"/>
