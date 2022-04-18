@@ -5,6 +5,7 @@
 		<Action type="Hide" target="old_item_name"/>
 		<Action type="Show" target="my_new_item_name"/>
 	-->
+	<!-- <Action type="Show" target="TrackList_Buttion"/> -->
 </EventActionBatch>
 
 <EventActionBatch name="GAME_GUI_OPEN_MAIN_MENU">
