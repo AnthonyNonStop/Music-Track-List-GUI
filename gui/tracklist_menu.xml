@@ -27,7 +27,7 @@
       </Button>
   	</Item>
 
-		<Item name="TrackList_IngameManu_Button" origin="1000 -580" hidden="true">
+		<Item name="TrackList_IngameManu_Button" origin="1000 -600" hidden="true">
 			<OnOpen>
 				<Action type="AddMeToParent" target="Menu_Ingame"/>
 			</OnOpen>
@@ -85,10 +85,6 @@
 		<OnOpen>
 	    <Action type="TriggerEvent" target="GUI_CAPTURE_INPUT"/>
 	  </OnOpen>
-
-	  <OnClose>
-	  	<Action type="TriggerEvent" target="GUI_RELEASE_INPUT"/>
-	  </OnClose>
 
 		<StaticImage origin="0 0">
 			<RenderObject2D texture="data/textures/gui/bg_texture.dds" sizeX="7680" color="f0e3cc26" sizeY="1920" texRepeatX="3" texRepeatY="1"/>
