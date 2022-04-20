@@ -1,11 +1,14 @@
 <GUIItems>
 
 <EventActionBatch name="GAME_GUI_LOADTIME_ACTIONS">
-	<Action type="Show" target="TrackList_Button"/>
-	<Action type="SetForeground" target="TrackList_Button"/>
+	<Action type="Show" target="TrackList_MainMenu_Button"/>
+	<Action type="SetForeground" target="TrackList_MainMenu_Button"/>
+
+	<Action type="Show" target="TrackList_IngameManu_Button"/>
+	<Action type="SetForeground" target="TrackList_IngameManu_Button"/>
 </EventActionBatch>
 
-  	<Item name="TrackList_Button" origin="300 -600" hidden="true">
+  	<Item name="TrackList_MainMenu_Button" origin="956 -640" hidden="true">
 			<OnOpen>
 				<Action type="AddMeToParent" target="Menu_Main"/>
 			</OnOpen>
@@ -19,25 +22,61 @@
       	</OnHover>
       	<OnClick>
         	<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
-        	<Action type="Show" target="TrackList_Controller"/>
+        	<Action type="Show" target="TrackList_MainMenu_Controller"/>
       	</OnClick>
       </Button>
   	</Item>
 
-    <Item name="TrackList_Controller" hidden="true">
+		<Item name="TrackList_IngameManu_Button" origin="1000 -580" hidden="true">
+			<OnOpen>
+				<Action type="AddMeToParent" target="Menu_Ingame"/>
+			</OnOpen>
+			<StaticImage origin="0 0">
+				<RenderObject2D texture="data/textures/gui/square.tga" color="0c0b0b80" sizeX="76" sizeY="76"/>
+			</StaticImage>
+			<Button origin="0 0" tooltip="Track list">
+				<RenderObject2D texture="data/textures/tracklist_hover.dds" blendMode="none"/>
+				<OnHover>
+					<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none"/>
+				</OnHover>
+				<OnClick>
+					<RenderObject2D texture="data/textures/tracklist_normal.dds" blendMode="none" scaleX="0.95" scaleY="0.95"/>
+					<Action type="Show" target="TrackList_IngameManu_Controller"/>
+				</OnClick>
+			</Button>
+		</Item>
+
+		<Item name="TrackList_MainMenu_Controller" hidden="true">
 	    <OnOpen>
         <Action type="Hide" target="Menu_Main"/>
 	    	<Action type="Show" target="TrackList_Main"/>
 	    </OnOpen>
 
 	    <OnClose>
+				<Action type="Hide" target="TrackList_Main"/>
         <Action type="Show" target="Menu_Main"/>
-	    	<Action type="Hide" target="TrackList_Main"/>
 	    </OnClose>
     </Item>
 
+		<Item name="TrackList_IngameManu_Controller" hidden="true">
+			<OnOpen>
+				<Action type="Hide" target="Menu_Ingame"/>
+				<Action type="Show" target="TrackList_Main"/>
+			</OnOpen>
+
+			<OnClose>
+				<Action type="Hide" target="TrackList_Main"/>
+				<Action type="Show" target="Menu_Ingame"/>
+			</OnClose>
+		</Item>
 
     <Item name="TrackList_Main" hidden="true">
+
+		<OnClose>
+				<Action type="TriggerEvent" target="GUI_RELEASE_INPUT"/>
+				<Action type="Hide" target="TrackList_IngameManu_Controller"/>
+				<Action type="Hide" target="TrackList_MainMenu_Controller"/>
+		</OnClose>
 
 		<OnKeyDown key0="27">
 			<Action type="Click" target="Menu_tracklist_Back"/>
@@ -72,9 +111,10 @@
 			</StaticImage>
 		</Item>
 
+		<!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+		<!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+		<!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 
-
-		<!-- mod-->
 		<Item name="album" origin="-800 100">
 			<StaticImage origin="0 0" >
 				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="740" sizeY="740" color="f0e3cc"/> <!--Cd Cover Outline --> <!-- can be deleted if the Cd Cover has a outline already-->
@@ -112,7 +152,7 @@
 				</OnHover>
 				<OnClick>
 					<RenderObject2D texture="data/textures/gui/button_hover_01.tga" color="40392b" flipX="false"/>
-					<Action type="Hide" target="TrackList_Controller"/>
+					<Action type="Hide" target="TrackList_Main"/>
 				</OnClick>
 			</Button>
 
