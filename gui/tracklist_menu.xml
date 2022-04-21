@@ -1,5 +1,7 @@
 <GUIItems>
 
+<!--By default you won't need to touch anything here untill you get to the album art (line 114) -->
+
 <EventActionBatch name="GAME_GUI_LOADTIME_ACTIONS">
 	<Action type="Show" target="TrackList_MainMenu_Button"/>
 	<Action type="SetForeground" target="TrackList_MainMenu_Button"/>
@@ -107,23 +109,21 @@
 			</StaticImage>
 		</Item>
 
-		<!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-		<!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-		<!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+<!--you can start touching stuff now -->
 
-		<Item name="album" origin="-800 100">
+		<Item name="album" align="l" origin="-800 100">
 			<StaticImage origin="0 0" >
-				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="740" sizeY="740" color="f0e3cc"/> <!--Cd Cover Outline --> <!-- can be deleted if the Cd Cover has a outline already-->
+				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="740" sizeY="740" color="f0e3cc"/> <!--Cd Cover Outline, Can be deleted if the cd cover has a outline already-->
 			</StaticImage>
 
 			<StaticImage origin="0 0" >
-				<RenderObject2D texture="data/textures/coverart.dds" flipY="true"/> <!--album art been resized to 720 x 720 Px -->
+				<RenderObject2D texture="data/textures/coverart.dds" flipY="true"/> <!--album art been resized to 720 x 720 Px --> <!--you can change this to a png, jpag files if you want -->
 			</StaticImage>
 
-			<StaticText origin="0 -430" align="c" text="DK2 Soundtrack by Cosmin " font="header_3" textColor="f97b03"/>
+			<StaticText origin="0 -430" align="c" text="DK2 Soundtrack by Cosmin" font="header_3" textColor="f97b03"/> <!-- I think you know what to put here EG: album name by artist -->
 		</Item>
 
-		<Item name="SongList" origin="120 350">	<!--add 70 to this when you add a song-->
+		<Item name="SongList" align="c" origin="120 350">	<!--keep adding 70 to (120, X) when you add a new song-->
 			<StaticText origin="0 0" text="1) Ready to Kick Some Doors 02:08" align="l" font="header_3" textColor="f0e3cc"/>
 			<StaticText origin="0 -70" text="2) Boots on the Ground 03:44" align="l" font="header_3" textColor="f0e3cc"/>
 			<StaticText origin="0 -140" text="3) Iahim 3:54" align="l" font="header_3" textColor="f0e3cc"/>
@@ -134,12 +134,12 @@
 			<StaticText origin="0 -490" text="8) SAD Boys in Town 3:52" align="l" font="header_3" textColor="f0e3cc"/>
 		</Item>
 
-		<Item name="bottom Screen Bar" align="sv" origin="0 -688">
+		<Item name="Bottom Screen Bar" align="sv" origin="0 -688">
 			<StaticImage name="ScreenFooter" align="b" origin="0 -32" stealFocus="true">
 				<RenderObject2D texture="data/textures/gui/square.tga" sizeX="9999" sizeY="120" color="211e1d"/>
 			</StaticImage>
 
-			<!-- back button -->
+			<!-- Dont touch this-->
 			<Button name="Menu_tracklist_Back" align="lb" origin="-1200 -4">
 				<ButtonText align="l" origin="20 0" text="@menu_generic_back" font="header_2" textColor="f0e3cc"/>
 				<OnHover>
@@ -151,9 +151,9 @@
 					<Action type="Hide" target="TrackList_Main"/>
 				</OnClick>
 			</Button>
+			<!-- Dont touch this-->
 
-			<!-- WEBSITE link -->
-			<Button origin="0 -4" align="cb" acceptInput="true" hidden="false">
+			<Button name="Artist website" origin="0 -4" align="cb" acceptInput="true" hidden="false">
 				<ButtonText origin="0 0" text="COMPOSER'S WEBSITE" align="c" font="header_2" textColor="f0e3cc"/>
 				<OnHover>
 					<RenderObject2D texture="data/textures/gui/menu_select.dds" color="f0e3cc" />
@@ -161,7 +161,7 @@
 				</OnHover>
 				<OnClick>
 					<RenderObject2D texture="data/textures/gui/menu_select.dds" color="40382b" />
-					<Action type="OpenURL" target="https://cosminmirza.com/"/>
+					<Action type="OpenURL" target="https://cosminmirza.com/"/> 	<!--Change this to the artist website  -->
 				</OnClick>
 			</Button>
 
@@ -174,12 +174,13 @@
 					</OnHover>
 					<OnClick>
 						<RenderObject2D texture="data/textures/AnthonyYoutube.dds" color="f0e3cc" scaleX="0.9" scaleY="0.9"/>
-						<Action type="OpenURL" target="https://www.youtube.com/watch?v=Kr1j5_z_j0o&list=PLg_S3MVuDT8Ysrlqr7-EhF6fDFbUzzTbG"/>
+						<Action type="OpenURL" target="https://www.youtube.com/watch?v=Kr1j5_z_j0o&list=PLg_S3MVuDT8Ysrlqr7-EhF6fDFbUzzTbG"/> <!-- youtube link -->
 					</OnClick>
 				</Button>
 
+		<!-- you can enable and disable these by takeing/puting the comment arrows in or out -->
 
-				<!-- <Button name="Spotify" align="c" origin="-90 0" >
+<!-- <Button name="Spotify" align="c" origin="-90 0" >
 					<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc80"/>
 					<OnHover>
 						<RenderObject2D texture="data/textures/AnthonySpotify.dds" color="f0e3cc"/>
@@ -190,7 +191,7 @@
 					</OnClick>
 				</Button> -->
 
-				<!-- <Button name="Soundcloud" align="c" origin="-180 0" >
+	<!-- <Button name="Soundcloud" align="c" origin="-180 0" >
 					<RenderObject2D texture="data/textures/gui/AnthonySoundcloud.dds" color="f0e3cc80"/>
 					<OnHover>
 						<RenderObject2D texture="data/textures/gui/AnthonySoundcloud.dds" color="f0e3cc"/>
